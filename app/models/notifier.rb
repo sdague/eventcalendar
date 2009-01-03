@@ -2,7 +2,7 @@ class Notifier < ActionMailer::Base
     require "tzinfo"
     require "icalendar"
     require "icalendar/tzinfo"
-    
+
     private
     def create_cal
         estart = DateTime.new(2008, 12, 30, 8, 0, 0)

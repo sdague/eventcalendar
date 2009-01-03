@@ -10,12 +10,14 @@
   </tr>
 
 <% for event in @events %>
-  <tr>
-    <td><%=h event.name %></td>
-    <td><%=h event.description %></td>
-    <td><%=h event.location %></td>
-    <td><%=h event.start %></td>
-    <td><%=h event.end %></td>
+  <tr valign="top">
+    <td class="nowrap"><%=h event.name %></td>
+    <td><%= simple_format(event.description) %></td>
+    <td class="nowrap"><%=h event.location %></td>
+    <td class="nowrap"><%=h event.start.to_datetime.strftime("%a, %b
+    %e - %k:%M") %></td>
+    <td class="nowrap"><%=h event.end.to_datetime.strftime("%a, %b
+    %e - %k:%M") %></td>
     <td><%= link_to 'Show', event %></td>
     <td><%= link_to 'Edit', edit_event_path(event) %></td>
     <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>

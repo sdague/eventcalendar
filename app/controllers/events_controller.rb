@@ -8,7 +8,9 @@ class EventsController < ApplicationController
         respond_to do |format|
             format.html # index.html.erb
             format.xml  { render :xml => @events }
-            format.json { render :json => @events }
+            format.json { 
+                render :json => @events 
+            }
             format.ics {
                 response.content_type = "text/calendar"
                 cal = event_calendar(@events, "America/New_York")
@@ -38,6 +40,7 @@ class EventsController < ApplicationController
   # GET /events/new
   # GET /events/new.xml
   def new
+      @lists = List.find(:all)
     @event = Event.new
 
     respond_to do |format|
@@ -48,12 +51,14 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+      @lists = List.find(:all)
     @event = Event.find(params[:id])
   end
 
   # POST /events
   # POST /events.xml
   def create
+      @lists = List.find(:all)
     @event = Event.new(params[:event])
 
     respond_to do |format|
@@ -71,6 +76,7 @@ class EventsController < ApplicationController
   # PUT /events/1
   # PUT /events/1.xml
   def update
+      @lists = List.find(:all)
     @event = Event.find(params[:id])
 
     respond_to do |format|

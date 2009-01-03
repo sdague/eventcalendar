@@ -1,28 +1,7 @@
 <h1>New event</h1>
 
 <% form_for(@event) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
-  </p>
-  <p>
-    <%= f.label :start %><br />
-    <%= f.datetime_select :start %>
-  </p>
-  <p>
-    <%= f.label :end %><br />
-    <%= f.datetime_select :end %>
-  </p>
+<%= render :partial => "form", :locals => { :f => f } %>
   <p>
     <%= f.submit "Create" %>
   </p>

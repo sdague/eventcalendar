@@ -1,26 +1,27 @@
 <p>
-  <b>Name:</b>
-  <%=h @event.name %>
-</p>
+  <h1>MHLVUG Meeting for 
+    <%= @event.start.to_datetime.strftime("%a, %B
+  %e @ %l %P") %>
+</h1>
+  <h3><%=h @event.name %></h3>
+  <p>
+    <%= simple_format(@event.description) %>
+  </p>
+  <table>
+    <tr>
+      <th>Location</th><td><%=h @event.location %></td></tr>
+      <% if (@event.end - @event.start < 1.day) %>
+         <tr><th>Date</th><td><%=h @event.start.to_datetime.strftime("%a, %B %e") %></td></tr>
+         <tr><th>Start Time</th><td><%=h @event.start.to_datetime.strftime("%l %P") %></td></tr>
+         <tr><th>End Time</th><td><%=h @event.end.to_datetime.strftime("%l
+         %P") %></td></tr>
+         <% end %>
+    </table>
+  <p>
+    Email will be sent to <b><%=h @event.list.address %></b> from
+    <b><%=h @event.list.from %></b>
+  </p>
 
-<p>
-  <b>Description:</b>
-  <%=h @event.description %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%=h @event.location %>
-</p>
-
-<p>
-  <b>Start:</b>
-  <%=h @event.start %>
-</p>
-
-<p>
-  <b>End:</b>
-  <%=h @event.end %>
 </p>
 
 
