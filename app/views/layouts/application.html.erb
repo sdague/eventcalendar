@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="http://planet.mhvlug.org/mhvlug.css">
+<link rel="icon"
+      href="http://planet.mhvlug.org/images/favicon16x16.png"
+      type="image/png">
+  <title>Events: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag 'default' %>
+
+</head>
+
+<body>
+<div id="header">
+<div id="logo"><a href="http://www.mhvlug.org"><img src="http://planet.mhvlug.org/images/logo-red.png"
+                                                    alt="Planet
+                                                         MHVLUG"
+                                                    border="0">
+      MHVLUG Events</a></div>
+</div>
+<!-- begin sidebar section -->
+<div id="sidebar">
+
+<div class="empty">
+</div>
+
+<div class="sidepanel">
+<h1>About</h1>
+<p>Planet MHVLUG is a community website based on the lives and experiences of <a href="http://www.mhvlug.org">MHVLUG</a> members.</p>
+<p>More information about the Mid-Hudson Valley Linux User Group can be found at <a href="http://www.mhvlug.org">mhvlug.org</a></p>
+</ul>
+</div>
+
+<div class="sidepanel">
+<h1>Contact</h1>
+sean at dague dot net<br>
+(Sean Dague)<br><br>
+If you are an active MHVLUG member, and would like to be listed in the planet, please send me an email.
+</div>
+</div>
+<!-- end sidebar section -->
+<div id="blogs">
+<p style="color: green"><%= flash[:notice] %></p>
+
+<%= yield  %>
+  
+<!-- end main section -->
+</div>
+</body>
+</html>
