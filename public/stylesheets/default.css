@@ -1,0 +1,15 @@
+table {
+    border: 0px
+}
+
+td {
+    border: 0px
+}
+
+th {
+    text-align: left;
+}
+
+.nowrap {
+    white-space: nowrap
+}
