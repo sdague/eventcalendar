@@ -24,7 +24,9 @@ module ActionMailer
                                            :body => render_message(template_name, @body))
                     end
                     unless @parts.empty?
-                        @content_type = "multipart/mixed"
+                        unless @content_type =~ /^multipart/
+                            @content_type = "multipart/alternative"
+                        end
                         @parts = sort_parts(@parts, @implicit_parts_order)
                     end
                 end
