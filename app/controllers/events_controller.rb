@@ -32,9 +32,23 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @event }
+          format.html # show.html.erb
+          format.xml  { render :xml => @event }
+          format.text {
+              response.content_type = "text/plain"
+              render :text => Notifier.create_invitation(@event)
+          }
     end
+  end
+  
+  def email
+      @event = Event.find(params[:id])
+      Notifier.deliver_invitation(@event)
+      respond_to do |format|
+          flash[:notice] = "Email sent out for #{@event.name}."
+          format.html { redirect_to(events_url) }
+          format.xml  { head :ok }
+      end
   end
 
   # GET /events/new

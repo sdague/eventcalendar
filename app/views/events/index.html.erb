@@ -20,6 +20,7 @@
     %e - %k:%M") %></td>
     <td><%= link_to 'Show', event %></td>
     <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <td class="nowrap"><%= link_to 'Send Mail', :controller => "events", :action => "email", :id => event %></td>
     <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

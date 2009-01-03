@@ -1,58 +1,77 @@
+module ActionMailer
+    # we override this because rails wants to do multipart alternative emails, and we need multipart mixed to add in the ical bit
+    class Base
+        def create!(method_name, *parameters) #:nodoc:
+            initialize_defaults(method_name)
+            __send__(method_name, *parameters)
+
+            # If an explicit, textual body has not been set, we check assumptions.
+            unless String === @body
+                # First, we look to see if there are any likely templates that match,
+                # which include the content-type in their file name (i.e.,
+                # "the_template_file.text.html.erb", etc.). Only do this if parts
+                # have not already been specified manually.
+                if @parts.empty?
+                    templates = Dir.glob("#{template_path}/#{@template}.*")
+                    templates.each do |path|
+                        basename = File.basename(path)
+                        template_regex = Regexp.new("^([^\\\.]+)\\\.([^\\\.]+\\\.[^\\\.]+)\\\.(" + template_extensions.join('|') + ")$")
+                        next unless md = template_regex.match(basename)
+                        template_name = basename
+                        content_type = md.captures[1].gsub('.', '/')
+                        @parts << Part.new(:content_type => content_type,
+                                           :disposition => "inline", :charset => charset,
+                                           :body => render_message(template_name, @body))
+                    end
+                    unless @parts.empty?
+                        @content_type = "multipart/mixed"
+                        @parts = sort_parts(@parts, @implicit_parts_order)
+                    end
+                end
+
+                # Then, if there were such templates, we check to see if we ought to
+                # also render a "normal" template (without the content type). If a
+                # normal template exists (or if there were no implicit parts) we render
+                # it.
+                template_exists = @parts.empty?
+                template_exists ||= Dir.glob("#{template_path}/#{@template}.*").any? { |i| File.basename(i).split(".").length == 2 }
+                @body = render_message(@template, @body) if template_exists
+
+                # Finally, if there are other message parts and a textual body exists,
+                # we shift it onto the front of the parts and set the body to nil (so
+                # that create_mail doesn't try to render it in addition to the parts).
+                if !@parts.empty? && String === @body
+                    @parts.unshift Part.new(:charset => charset, :body => @body)
+                    @body = nil
+                end
+            end
+
+            # If this is a multipart e-mail add the mime_version if it is not
+            # already set.
+            @mime_version ||= "1.0" if !@parts.empty?
+
+            # build the mail object itself
+            @mail = create_mail
+        end
+    end
+end
+
 class Notifier < ActionMailer::Base
     require "tzinfo"
     require "icalendar"
     require "icalendar/tzinfo"
 
-    private
-    def create_cal
-        estart = DateTime.new(2008, 12, 30, 8, 0, 0)
-        eend = DateTime.new(2008, 12, 30, 11, 0, 0)
-        tstring = "America/Chicago"
+    include EventsHelper
+
+    def invitation(event)
+        cal = event_calendar([event], "America/New_York")
+        cal.ip_method = "REQUEST"
         
-        tz = TZInfo::Timezone.get(tstring)
-        cal = Icalendar::Calendar.new
-        timezone = tz.ical_timezone(estart)
-
-        cal.add(timezone)
-
-        cal.event do
-            dtstart       estart
-            dtend        eend
-            summary     "Meeting with the man."
-            description "Have a long lunch meeting and decide nothing..."
-            transparency "transparent"
-            organizer     "MAILTO:netflix@dague.net"
-            klass       "PUBLIC"
-        end
-        return cal
-    end
-    
-    public
-    def invitation(recipient)
-        recipients      "sean@dague.net"
+        recipients      event.list.address
         # recipient.email_address_with_name
-        subject         "Invitation"
-        from            "netflix@dague.net"
+        subject         "[ANNOUNCE] MHVLUG Meeting #{event.start.to_datetime.strftime("%A, %B %e -%l%P")} -#{event.end.to_datetime.strftime("%l%P")} : #{event.name}"
+        from  event.list.from
         content_type    "multipart/mixed"
-        
-        part "text/plain" do |p|
-            p.body = "This is an ical test"
-        end
-        
-        part "text/calendar" do |p|
-            cal = create_cal
-            cal.ip_method = "REQUEST" # so it triggers this as an invite
-            p.body = cal.to_ical
-            # p.transfer_encoding = "base64"
-        end
-        
-#         part :content_type => "text/html",
-#         :body => render_message("signup-as-html", :account => recipient)
-        
-#       part "text/plain" do |p|
-#         p.body = render_message("signup-as-plain", :account => recipient)
-#         p.transfer_encoding = "base64"
-#       end
+        body           :event => event, :cal => cal
     end
-
 end
