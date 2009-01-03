@@ -16,9 +16,17 @@
     <td><%= link_to 'Edit', edit_list_path(list) %></td>
     <td><%= link_to 'Destroy', list, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
+  <% for event in list.events.sort_by {|a| a.start.to_datetime} %>
+  <tr>
+    <td></td>
+    <th><%=h event.name %></th>
+    <td><%=h event.start.to_datetime.strftime("%b %d, %Y - %H:%M") %></td>
+    <td><%= link_to 'Show', event %></td>
+  </tr>
+  <% end %>
 <% end %>
 </table>
 
 <br />
-
+<%= link_to 'Events', events_path %> | 
 <%= link_to 'New list', new_list_path %>
