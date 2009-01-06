@@ -54,12 +54,6 @@ Rails::Initializer.run do |config|
     :secret      => 'df000c92cb366f4f46cfee9af45898257ed86cd3f3699ed9f1c0e929a5b79fb69ecc0e7fa522661fd95f1b3b772c1b8819ce5a3b3502641de5f39a9bf985606c'
   }
 
-    config.action_mailer.smtp_settings = {
-        :address => "192.168.1.2",
-        :port       => 25,
-        :domain    => "dague.net",
-    }
-
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
   # (create the session table with "rake db:sessions:create")
