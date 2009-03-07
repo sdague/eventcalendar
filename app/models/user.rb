@@ -44,6 +44,21 @@ class User < ActiveRecord::Base
     activation_code.nil?
   end
 
+  def create_reset_code
+      @reset = true
+      self.attributes = {:reset_code => Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )}
+      save(false)
+  end
+  
+  def recently_reset?
+      @reset
+  end
+  
+  def delete_reset_code
+      self.attributes = {:reset_code => nil}
+      save(false)
+  end
+  
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
   # uff.  this is really an authorization, not authentication routine.  
