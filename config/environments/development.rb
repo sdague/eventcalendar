@@ -17,7 +17,7 @@ config.action_controller.perform_caching             = false
 config.action_mailer.raise_delivery_errors = true
 
 config.action_mailer.smtp_settings = {
-    :address => "192.168.1.3",
-    :port       => 25,
+    :address => "localhost",
+    :port       => 2525,
     :domain    => "dague.net",
 }
