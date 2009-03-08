@@ -2,6 +2,12 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  # AuthenticatedSystem must be included for RoleRequirement, and is provided by installing acts_as_authenticates and running 'script/generate authenticated account user'.
+  include AuthenticatedSystem
+  # You can move this into a different controller, if you wish.  This module gives you the require_role helpers, and others.
+  include RoleRequirementSystem
+
+
     # this one doesn't work in rails 2.1.2, it should work in rails 2.2.x
     rescue_from ActionController::RoutingError, :with => :route_not_found
     
