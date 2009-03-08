@@ -14,10 +14,10 @@ config.action_view.debug_rjs                         = true
 config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
-config.action_mailer.raise_delivery_errors = false
+config.action_mailer.raise_delivery_errors = true
 
-#config.action_mailer.smtp_settings = {
-#    :address => "192.168.1.2",
-#    :port       => 25,
-#    :domain    => "dague.net",
-#}
+config.action_mailer.smtp_settings = {
+    :address => "192.168.1.3",
+    :port       => 25,
+    :domain    => "dague.net",
+}
