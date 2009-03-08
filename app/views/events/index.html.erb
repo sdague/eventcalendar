@@ -1,4 +1,16 @@
 <h1>Listing events</h1>
+  
+<% calendar_for(@events) do |t| %>
+<%= t.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat') %>
+<% t.day :html => {:width => "100px"} do |day, tasks| %>
+<%= day.day %><br/>
+<% tasks.each do |task| %>
+<%= h(task.name) %>
+<% end %>
+<% end %>
+<% end %>
+
+
 
 <table>
   <tr>
@@ -8,6 +20,7 @@
     <th>Start</th>
     <th>End</th>
   </tr>
+
 
 <% for event in @events %>
   <tr valign="top">
