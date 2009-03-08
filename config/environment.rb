@@ -23,7 +23,7 @@ Rails::Initializer.run do |config|
   # Specify gems that this application depends on. 
   # They can then be installed with "rake gems:install" on new installations.
   # config.gem "bj"
-  config.gem "sdague-icalendar", :lib => "icalendar", :version => "1.0.2.3", :source => "http://gems.github.com"
+  config.gem "icalendar", :version => "1.1.0"
   config.gem "tzinfo"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "aws-s3", :lib => "aws/s3"
