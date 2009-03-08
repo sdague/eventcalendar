@@ -22,7 +22,7 @@ class UserMailer < ActionMailer::Base
   protected
     def setup_email(user)
       @recipients  = "#{user.email}"
-      @from        = "sean@dague.net"
+      @from        = "sean@mhvlug.org"
       @subject     = "[MHVLUG Mailer] "
       @sent_on     = Time.now
       @body[:user] = user
