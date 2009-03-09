@@ -33,3 +33,21 @@ module EventsHelper
     end
     
 end
+
+module CalendarHelper
+    class CalendarBuilder < TableHelper::TableBuilder
+        
+        private
+        
+        def td_options(day)
+            options = {}
+            if(day.strftime("%Y-%m-%d") ==  @today.strftime("%Y-%m-%d"))
+                options[:class] = 'today'
+            end
+            if(day.wday == 0 or day.wday == 6)
+                options[:class] = 'weekend'
+            end
+            options
+        end
+    end
+end

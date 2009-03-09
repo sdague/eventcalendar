@@ -2,16 +2,16 @@
 
 <h2><%= Date.today.strftime("%B %Y") %></h2>
 <% calendar_for(@events) do |t| %>
-<%= t.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat') %>
-<% t.day :class => "day" do |day, events| %>
-<span class="daynumber"><%= day.day %></span><br/><br/>
-<% events.each do |event| %>
-<%= link_to event.name, event %><br/>
-<%=h event.start.to_datetime.strftime("%k:%M") %> - 
-<%=h event.end.to_datetime.strftime("%k:%M") %><br/>
-<%=h event.location %>
-<% end %>
-<% end %>
+   <%= t.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat') %>
+       <% t.day :class => "day" do |day, events| %>
+       <span class="daynumber"><%= day.day %></span><br/><br/>
+       <% events.each do |event| %>
+          <%= link_to event.name, event %><br/>
+          <%=h event.start.to_datetime.strftime("%k:%M") %> - 
+          <%=h event.end.to_datetime.strftime("%k:%M") %><br/>
+          <%=h event.location %>
+       <% end %>
+   <% end %>
 <% end %>
 
 <%= link_to 'Lists', :controller => "lists" %> | 

@@ -27,3 +27,11 @@ tr.day td {
     margin-left: -5px;
     border: solid 1px black;
 }
+
+.today {
+    background-color: #FFCACA;
+}
+
+.weekend {
+    background-color: #eeeeee;
+}
