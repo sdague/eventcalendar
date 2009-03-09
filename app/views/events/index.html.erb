@@ -1,45 +1,18 @@
-<h1>Listing events</h1>
-  
+<h1>Current Events</h1>
+
+<h2><%= Date.today.strftime("%B %Y") %></h2>
 <% calendar_for(@events) do |t| %>
 <%= t.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat') %>
-<% t.day :html => {:width => "100px"} do |day, tasks| %>
-<%= day.day %><br/>
-<% tasks.each do |task| %>
-<%= h(task.name) %>
+<% t.day :class => "day" do |day, events| %>
+<span class="daynumber"><%= day.day %></span><br/><br/>
+<% events.each do |event| %>
+<%= link_to event.name, event %><br/>
+<%=h event.start.to_datetime.strftime("%k:%M") %> - 
+<%=h event.end.to_datetime.strftime("%k:%M") %><br/>
+<%=h event.location %>
 <% end %>
 <% end %>
 <% end %>
-
-
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Location</th>
-    <th>Start</th>
-    <th>End</th>
-  </tr>
-
-
-<% for event in @events %>
-  <tr valign="top">
-    <td class="nowrap"><%=h event.name %></td>
-    <td><%= simple_format(event.description) %></td>
-    <td class="nowrap"><%=h event.location %></td>
-    <td class="nowrap"><%=h event.start.to_datetime.strftime("%a, %b
-    %e - %k:%M") %></td>
-    <td class="nowrap"><%=h event.end.to_datetime.strftime("%a, %b
-    %e - %k:%M") %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td class="nowrap"><%= link_to 'Send Mail', :controller => "events", :action => "email", :id => event %></td>
-    <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
 
 <%= link_to 'Lists', :controller => "lists" %> | 
 

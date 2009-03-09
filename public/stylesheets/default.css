@@ -13,3 +13,17 @@ th {
 .nowrap {
     white-space: nowrap
 }
+
+tr.day td {
+    border: solid 1px black;
+    vertical-align: top;
+    width: 125px;
+    height: 150px;
+}
+
+.daynumber {
+    background-color: #cccccc;
+    padding: 4px;
+    margin-left: -5px;
+    border: solid 1px black;
+}
