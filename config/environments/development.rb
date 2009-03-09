@@ -20,4 +20,6 @@ config.action_mailer.smtp_settings = {
     :address => "localhost",
     :port       => 2525,
     :domain    => "dague.net",
+    :enable_starttls_auto => false
+
 }
