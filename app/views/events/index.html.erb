@@ -4,7 +4,7 @@
 <% calendar_for(@events) do |t| %>
    <%= t.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat') %>
        <% t.day :class => "day" do |day, events| %>
-       <span class="daynumber"><%= day.day %></span><br/><br/>
+       <div class="daynumber"><span class="innerday"><%= day.day %></span></div>
        <% events.each do |event| %>
        <div class="event">
           <%= link_to event.name, event %><br/>

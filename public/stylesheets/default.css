@@ -19,13 +19,18 @@ tr.day td {
     vertical-align: top;
     width: 125px;
     height: 150px;
+    padding: 0px;
+    margin: 0px;
 }
 
 .daynumber {
     background-color: #cccccc;
-    padding: 4px;
-    margin-left: -5px;
+    padding: 10px;
     border: solid 1px black;
+    display: table;
+}
+.innerday {
+    padding: 4px;
 }
 
 .today {
@@ -39,4 +44,5 @@ tr.day td {
 .event {
     border: solid 1px black;
     background-color: #FDF589;
+    margin: 4px;
 }
