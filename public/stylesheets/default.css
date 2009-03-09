@@ -45,4 +45,5 @@ tr.day td {
     border: solid 1px black;
     background-color: #FDF589;
     margin: 4px;
+    padding: 0px 2px;
 }
