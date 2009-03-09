@@ -33,8 +33,9 @@ tr.day td {
     padding: 4px;
 }
 
-.today {
+tr.day td.today {
     background-color: #FFCACA;
+    border: solid 3px #660000;
 }
 
 .weekend {
