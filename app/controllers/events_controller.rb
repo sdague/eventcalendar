@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-    require_role "admin", :except => [:list, :show]
+    require_role "admin", :except => [:index, :show]
 
     # GET /events
     # GET /events.xml
