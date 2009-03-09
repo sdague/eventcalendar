@@ -35,3 +35,8 @@ tr.day td {
 .weekend {
     background-color: #eeeeee;
 }
+
+.event {
+    border: solid 1px black;
+    background-color: #FDF589;
+}
