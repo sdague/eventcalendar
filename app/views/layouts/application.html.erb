@@ -33,21 +33,42 @@
 </div>
 
 <div class="sidepanel">
-<h1>About</h1>
-<p>Planet MHVLUG is a community website based on the lives and experiences of <a href="http://www.mhvlug.org">MHVLUG</a> members.</p>
-<p>More information about the Mid-Hudson Valley Linux User Group can be found at <a href="http://www.mhvlug.org">mhvlug.org</a></p>
+<h1>Admin</h1>
+<ul>
+  <% if not current_user %>
+  <li><%= link_to 'Login', :controller => :sessions, :action => :new %></li>
+  <% else %>
+  <% if current_user.has_role?("admin") %>
+  <li><%= link_to 'Events', :controller => :events %></li>
+  <li><%= link_to 'Lists', :controller => :lists %></li>
+  <% end %>
+  <li><%= link_to 'Logout', :controller => :sessions, :action => :destroy %></li>
+  <% end %>
 </ul>
 </div>
 
 <div class="sidepanel">
-<h1>Contact</h1>
-sean at dague dot net<br>
-(Sean Dague)<br><br>
-If you are an active MHVLUG member, and would like to be listed in the planet, please send me an email.
+<h1>About</h1>
+<p>
+  The MHVLUG Calendar was originally created as the sample application for my
+  <a href="http://mhvlug.org/MonthlyMeetings/2009/02">Ruby on
+  Rails</a> talk for MHVLUG, and to simplify my monthly meeting
+  announcements.  
+  It is made available under the Apache 2.0 License for anyone to
+  build upon.
+</p>
+<p>
+  For more information, as well as full source code for the project,
+  see
+  the <a href="http://projects.dague.net/projects/show/eventmailer">Event
+  Calendar project website</a>.  If you run into a bug or feature that
+  you would like, please feel free to create a redmine account there
+  and file that bug.
+</p>
 </div>
 </div>
 <!-- end sidebar section -->
-<div id="blogs">
+<div id="main">
 <p style="color: green"><%= flash[:notice] %></p>
 
 <%= yield  %>
