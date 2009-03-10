@@ -1,8 +1,6 @@
+<% @title = "#{@event.name} for #{@event.start.to_datetime.strftime("%a, %B %e @ %l %P")}" %>
 <p>
-  <h1>MHLVUG Meeting for 
-    <%= @event.start.to_datetime.strftime("%a, %B
-  %e @ %l %P") %>
-</h1>
+  <h1><%=h @title %></h1>
   <h3><%=h @event.name %></h3>
   <p>
     <%= simple_format(@event.description) %>
