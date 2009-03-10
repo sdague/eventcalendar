@@ -32,7 +32,7 @@ class EventsController < ApplicationController
         @events = Event.find(:all)
         respond_to do |format|
             format.html {
-                render :layout => false 
+                render :layout => "slim"
             } # index.html.erb
         end
     end
