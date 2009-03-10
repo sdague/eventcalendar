@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-    require_role "admin", :except => [:index, :show]
+    require_role "admin", :except => [:index, :show, :embed]
 
     # GET /events
     # GET /events.xml
@@ -25,6 +25,15 @@ class EventsController < ApplicationController
                 cal.ip_method = "PUBLISH"
                 render :text => cal.to_ical
             }
+        end
+    end
+
+    def embed
+        @events = Event.find(:all)
+        respond_to do |format|
+            format.html {
+                render :layout => false 
+            } # index.html.erb
         end
     end
     

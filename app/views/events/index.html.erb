@@ -1,20 +1,6 @@
 <h1>Current Events</h1>
 
-<h2><%= Date.today.strftime("%B %Y") %></h2>
-<% calendar_for(@events) do |t| %>
-   <%= t.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat') %>
-       <% t.day :class => "day" do |day, events| %>
-       <div class="daynumber"><span class="innerday"><%= day.day %></span></div>
-       <% events.each do |event| %>
-       <div class="event">
-          <%= link_to event.name, event %><br/>
-          <%=h event.start.to_datetime.strftime("%k:%M") %> - 
-          <%=h event.end.to_datetime.strftime("%k:%M") %><br/>
-          <%=h event.location %>
-       </div>
-       <% end %>
-   <% end %>
-<% end %>
+<%= render :partial => "calendar", :locals => { :eventlist => @events } %>
 
 <%= link_to 'Lists', :controller => "lists" %> | 
 

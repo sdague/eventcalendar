@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session
 
-  map.resources :events
+    map.resources :events, :collection => {:embed => :get} 
 
   # The priority is based upon order of creation: first created -> highest priority.
 
