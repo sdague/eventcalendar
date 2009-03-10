@@ -8,8 +8,6 @@ and <%= link_to 'JSON', :action => :index, :format => :json %>
 
 <%= render :partial => "calendar", :locals => { :eventlist => @events } %>
 
-
-
 <%= link_to 'Lists', :controller => "lists" %> | 
 
 <%= link_to 'New event', new_event_path %>

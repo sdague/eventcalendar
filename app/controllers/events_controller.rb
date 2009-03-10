@@ -6,6 +6,11 @@ class EventsController < ApplicationController
     include EventsHelper
     def index
         @events = Event.find(:all)
+        if params[:date]
+            @date = Date.parse(params[:date])
+        else
+            @date = Date.today
+        end
         
         respond_to do |format|
             format.html # index.html.erb
@@ -30,6 +35,11 @@ class EventsController < ApplicationController
 
     def embed
         @events = Event.find(:all)
+        if params[:date]
+            @date = Date.parse(params[:date])
+        else
+            @date = Date.today
+        end
         respond_to do |format|
             format.html {
                 render :layout => "slim"
