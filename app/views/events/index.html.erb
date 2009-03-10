@@ -1,6 +1,13 @@
 <h1>Current Events</h1>
 
+Also available as 
+<%= link_to 'iCalendar', :action => :index, :format => :ics %>, 
+<%= link_to 'XML', :action => :index, :format => :xml %>,
+and <%= link_to 'JSON', :action => :index, :format => :json %>
+
 <%= render :partial => "calendar", :locals => { :eventlist => @events } %>
+
+
 
 <%= link_to 'Lists', :controller => "lists" %> | 
 

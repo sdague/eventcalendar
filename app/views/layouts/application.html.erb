@@ -3,23 +3,26 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="http://planet.mhvlug.org/mhvlug.css">
 <link rel="icon"
       href="http://planet.mhvlug.org/images/favicon16x16.png"
       type="image/png">
-  <title>Events: <%= controller.action_name %></title>
+  <title>
+    <%= @title %>
+  </title>
   <%= javascript_include_tag :defaults %>
+  <%= stylesheet_link_tag 'mhvlug' %>
   <%= stylesheet_link_tag 'scaffold' %>
   <%= calendar_date_select_includes "red" %>
   <%= stylesheet_link_tag 'default' %>
-
+  <% if @alternate %>
+  <%= @alternate %>
+  <% end %>
 </head>
 
 <body>
 <div id="header">
-<div id="logo"><a href="http://www.mhvlug.org"><img src="http://planet.mhvlug.org/images/logo-red.png"
-                                                    alt="Planet
-                                                         MHVLUG"
+<div id="logo"><a href="http://cal.mhvlug.org"><img src="http://planet.mhvlug.org/images/logo-red.png"
+                                                    alt="MHVLUG Events"
                                                     border="0">
       MHVLUG Events</a></div>
 </div>
