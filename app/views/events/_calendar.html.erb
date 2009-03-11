@@ -11,7 +11,6 @@
 <%= link_to 'Previous Month', :date => 1.month.ago(@date) %> |
 <%= link_to 'Next Month', :date => 1.month.since(@date) %>
 
-
 <% calendar_for(eventlist, :month => @month, :year => @year) do |t| %>
    <%= t.head('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat') %>
        <% t.day :class => "day" do |day, events| %>
