@@ -40,3 +40,11 @@ tr.day td.today {
     margin-right: 5px;
     padding: 0px 2px;
 }
+
+input#openid_url {
+   background: url(http://openid.net/login-bg.gif) no-repeat;
+   background-color: #fff;
+   background-position: 0 50%;
+   color: #000;
+   padding-left: 18px;
+}
