@@ -27,6 +27,13 @@ tr.day td.today {
     border: solid 3px #660000;
 }
 
+tr.day td.today .daynumber {
+    background-color: #990000;
+    color: white;
+    font-weight: bold;
+}
+
+
 .weekend {
     background-color: #eeeeee;
 }
