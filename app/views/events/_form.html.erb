@@ -17,7 +17,7 @@
   </p>
   <p>
     <%= f.label :start %><br />
-    <%= f.calendar_date_select :start, :time => true %>
+    <%= f.calendar_date_select :start, :time => true, :onchange => "$('event_end').setValue($F('event_start'));" %>
   </p>
   <p>
     <%= f.label :end %><br />
