@@ -1,27 +1,31 @@
 <% @title = "#{@event.name} for #{@event.start.to_datetime.strftime("%a, %B %e @ %l %P")}" %>
-<p>
-  <h1><%=h @title %></h1>
-  <h3><%=h @event.name %></h3>
-  <p>
-    <%= simple_format(@event.description) %>
-  </p>
-  <table>
-    <tr>
-      <th>Location</th><td><%=h @event.location %></td></tr>
-      <% if (@event.end - @event.start < 1.day) %>
-         <tr><th>Date</th><td><%=h @event.start.to_datetime.strftime("%a, %B %e") %></td></tr>
-         <tr><th>Start Time</th><td><%=h @event.start.to_datetime.strftime("%l %P") %></td></tr>
-         <tr><th>End Time</th><td><%=h @event.end.to_datetime.strftime("%l
-         %P") %></td></tr>
-         <% end %>
-    </table>
-  <p>
-    Email will be sent to <b><%=h @event.list.address %></b> from
-    <b><%=h @event.list.from %></b>
-  </p>
+ <div class="event">
+   <h1><%=h @event.name %></h1>
+   <hr>
+     <div class="details">
+       <table class="event_time">
+         <tr>
+           <% if (@event.end - @event.start < 1.day) %>
+              <tr><th>Date</th><td><%=h @event.start.to_datetime.strftime("%a, %B %e") %></td></tr>
+              <tr><th>Start Time</th><td><%=h @event.start.to_datetime.strftime("%l:%M %P") %></td></tr>
+              <tr><th>End Time</th><td><%=h @event.end.to_datetime.strftime("%l:%M
+          %P") %></td></tr>
+            <% else %>
+              <tr><th>Starts</th><td><%=h @event.start.to_datetime.strftime("%a, %B %e - %l:%M %P") %></td></tr>
+              <tr><th>Ends</th><td><%=h @event.end.to_datetime.strftime("%a, %B %e - %l:%M %P") %></td></tr>
+           <% end %>
+         </table>
+           <%= textilize(@event.description) %>
+           
+           <h2>Event Location</h2>
+           <%=h @event.location %>
 
-</p>
+    <p>
+           Email will be sent to <b><%=h @event.list.address %></b> from
+           <b><%=h @event.list.from %></b>
+         </div>
 
+</div>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

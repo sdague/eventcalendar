@@ -48,6 +48,15 @@ tr.day td.today .daynumber {
     padding: 0px 2px;
 }
 
+.details {
+    padding: 10px;
+}
+
+table.event_time th {
+    text-align: left;
+    padding-right: 15px;
+}
+
 input#openid_url {
    background: url(http://openid.net/login-bg.gif) no-repeat;
    background-color: #fff;
