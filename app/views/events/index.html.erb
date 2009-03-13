@@ -8,6 +8,7 @@ and <%= link_to 'JSON', :action => :index, :format => :json %>
 
 <%= render :partial => "calendar", :locals => { :eventlist => @events } %>
 
+<% if current_user and current_user.has_role?("admin") %>
 <%= link_to 'Lists', :controller => "lists" %> | 
-
 <%= link_to 'New event', new_event_path %>
+<% end %>
