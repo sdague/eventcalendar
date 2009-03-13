@@ -7,13 +7,17 @@ ActionController::Routing::Routes.draw do |map|
     map.signup '/signup', :controller => 'users', :action => 'new'
     map.forgot    '/forgot',                    :controller => 'users',     :action => 'forgot'
     map.reset     'reset/:reset_code',          :controller => 'users',     :action => 'reset'
+
+    map.about '/about', :controller => 'admin', :action => 'about'
+    map.about '/admin', :controller => 'admin', :action => 'index'
+    
     map.open_id_complete 'session', :controller => "sessions", :action => "create", :requirements => { :method => :get }
     
     map.resources :users
     
     map.resource :session
 
-    map.resources :events, :collection => {:embed => :get }, :member => {:copy => :get} 
+    map.resources :events, :collection => {:embed => :get }, :member => {:copy => :get } 
 
   # The priority is based upon order of creation: first created -> highest priority.
 
