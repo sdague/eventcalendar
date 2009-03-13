@@ -1,4 +1,6 @@
 <% @title = "#{@event.name} for #{@event.start.to_datetime.strftime("%a, %B %e @ %l:%M %P")}" %>
+
+
  <div class="event">
    <h1><%=h @event.name %></h1>
    <hr>
@@ -15,15 +17,32 @@
               <tr><th>Ends</th><td><%=h @event.end.to_datetime.strftime("%a, %B %e - %l:%M %P") %></td></tr>
            <% end %>
          </table>
-           <%= textilize(@event.description) %>
            
-           <h2>Event Location</h2>
-           <%=h @event.location %>
+           <div class="description">
+             <%= textilize(@event.description) %>
+           </div>
 
-    <p>
-           Email will be sent to <b><%=h @event.list.address %></b> from
+           <div class="location">           
+             <h2>Event Location</h2>
+             
+             <%=h @event.location %>
+           </div>
+
+           <div class="contact">
+               Email will be sent to <b><%=h @event.list.address %></b> from
            <b><%=h @event.list.from %></b>
+           </div>
+
+           <div class="alternate">
+             Also available as 
+             <%= link_to 'iCalendar', :action => :show, :format => :ics %>, 
+           <%= link_to 'XML', :action => :show, :format => :xml %>,
+           and <%= link_to 'JSON', :action => :show, :format => :json %>
+           
          </div>
+           
+         </div>
+        
 
 </div>
 

@@ -52,6 +52,8 @@ h2
   line-height: 1.3em;
   padding: 2px;
   padding-left: 8px;
+  color: #880000;
+  border-bottom: 1px solid #a40;
 }	
 
 h2#channel {

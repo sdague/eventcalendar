@@ -50,14 +50,20 @@ class EventsController < ApplicationController
     # GET /events/1
     # GET /events/1.xml
     def show
-
         @event = Event.find(params[:id])
-
-
 
         respond_to do |format|
             format.html # show.html.erb
             format.xml  { render :xml => @event }
+            format.json { 
+                render :json => @event
+            }
+            format.ics {
+                response.content_type = "text/calendar"
+                cal = event_calendar([@event], "America/New_York")
+                cal.ip_method = "PUBLISH"
+                render :text => cal.to_ical
+            }
             format.text {
                 response.content_type = "text/plain"
                 render :text => Notifier.create_invitation(@event)
