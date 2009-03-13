@@ -24,9 +24,11 @@
 
            <div class="location">           
              <h2>Event Location</h2>
+             <%=h @event.location.name %>
+             <%= textilize(@event.location.address) %>
 
              <%= @map.to_html %>
-             <div style="width: 500px; height: 500px;">
+             <div style="width: 800px; height: 500px;">
                <%= @map.div %>
              </div>
 

@@ -6,7 +6,8 @@ class GoogleMap
     :controls,
     :inject_on_load,
     :zoom,
-    :center
+    :center,
+    :type
   
   def initialize(options = {})
     self.dom_id = 'google_map'
@@ -45,6 +46,9 @@ class GoogleMap
     #   added by Patrick to enable load functions
     js << "#{dom_id}.load = GEvent.addListener(#{dom_id},'load',GoogleMapOnLoad)"
     js << "}"
+      
+    js << '    ' + type_js
+      
     js << '    ' + controls_js
     
     js << '    ' + center_on_markers_js
@@ -84,6 +88,13 @@ class GoogleMap
     #js << "}"
         
     return js.join("\n")
+  end
+
+  def type_js
+    js = ""
+    if type
+      js = "#{dom_id}.setMapType(#{type});"
+    end
   end
   
   def controls_js

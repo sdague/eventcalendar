@@ -164,7 +164,7 @@ class EventsController < ApplicationController
     end
     
     def create_map(location)
-        map = GoogleMap.new
+        map = GoogleMap.new(:type => "G_HYBRID_MAP")
         map.markers << GoogleMapMarker.new(
                                            :map => map,
                                            :lat => location.lat,
