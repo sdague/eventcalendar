@@ -21,3 +21,5 @@ config.action_mailer.delivery_method = :sendmail
 
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
+GOOGLE_APPLICATION_ID = 'ABQIAAAAGD6lcN8PyGdKtuuIr1yBGhRibsu5AiGj4TqMMImmyD0JylruLRT5QAcBip9vfMgls3rgpL6wty_bRQ'
+
