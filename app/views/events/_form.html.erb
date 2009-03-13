@@ -12,8 +12,8 @@
     <%= f.text_area :description %>
   </p>
   <p>
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
+    <%= f.label :location_id %><br />
+    <%= collection_select("event", "location_id", @locations, "id", "name") %>
   </p>
   <p>
     <%= f.label :start %><br />

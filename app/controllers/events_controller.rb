@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
     require_role "admin", :except => [:index, :show, :embed]
+    before_filter :find_supporting,  :only => [:new, :create, :copy, :edit, :update] 
 
     # GET /events
     # GET /events.xml
@@ -84,7 +85,6 @@ class EventsController < ApplicationController
     # GET /events/new
     # GET /events/new.xml
     def new
-        @lists = List.find(:all)
         @event = Event.new
 
         respond_to do |format|
@@ -95,13 +95,11 @@ class EventsController < ApplicationController
 
     # GET /events/1/edit
     def edit
-        @lists = List.find(:all)
         @event = Event.find(params[:id])
     end
 
     # GET /events/1/copy
     def copy
-        @lists = List.find(:all)
         old_event = Event.find(params[:id])
         @event = Event.new
         @event.update_attributes(old_event.attributes)
@@ -115,7 +113,6 @@ class EventsController < ApplicationController
     # POST /events
     # POST /events.xml
     def create
-        @lists = List.find(:all)
         @event = Event.new(params[:event])
 
         respond_to do |format|
@@ -133,7 +130,6 @@ class EventsController < ApplicationController
     # PUT /events/1
     # PUT /events/1.xml
     def update
-        @lists = List.find(:all)
         @event = Event.find(params[:id])
 
         respond_to do |format|
@@ -158,5 +154,11 @@ class EventsController < ApplicationController
             format.html { redirect_to(events_url) }
             format.xml  { head :ok }
         end
+    end
+    
+    private
+    def find_supporting
+        @lists = List.find(:all)
+        @locations = Location.find(:all)
     end
 end
