@@ -1,4 +1,4 @@
-<% @title = "#{@event.name} for #{@event.start.to_datetime.strftime("%a, %B %e @ %l %P")}" %>
+<% @title = "#{@event.name} for #{@event.start.to_datetime.strftime("%a, %B %e @ %l:%M %P")}" %>
  <div class="event">
    <h1><%=h @event.name %></h1>
    <hr>
