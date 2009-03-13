@@ -47,12 +47,10 @@ module CalendarHelper
             options = {}
             if(day.strftime("%Y-%m-%d") ==  @today.strftime("%Y-%m-%d"))
                 options[:class] = 'today'
-            end
-            if(day.wday == 0 or day.wday == 6)
-                options[:class] = 'weekend'
-            end
-            if(day.month != @calendar.month)
+            elsif(day.month != @calendar.month)
                 options[:class] = 'notmonth'
+            elsif(day.wday == 0 or day.wday == 6)
+                options[:class] = 'weekend'
             end
             options
         end
