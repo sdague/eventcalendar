@@ -36,7 +36,6 @@
 <div class="sidepanel">
 <h1>Navigation</h1>
 <ul>
-  <li><%= link_to 'About', :controller => :admin, :action => :about %></li>
   <li><%= link_to 'Events', :controller => :events %></li>
   <% if not current_user %>
   <li><%= link_to 'Login', :controller => :sessions, :action => :new %></li>
@@ -48,10 +47,27 @@
   <% end %>
 </ul>
 </div>
-<% if @alternate == true %>
 <div class="sidepanel">
-<h1>Other Formats</h1>
+<h1>Related</h1>
+<ul>
+  <li><%= link_to 'About', :controller => :admin, :action => :about
+  %></li>
+  <li><a href="http://projects.dague.net/projects/show/eventmailer">Project
+  Site</a></li>
+  <li><a href="http://projects.dague.net/projects/eventmailer/issues/new">Report
+  Bug</a></li>
+  <li><a href="http://github.com/sdague/mhvlug-event/tree/master">Github
+  Tree</a></li>
+  <li><a href="http://mhvlug.org">MHVLUG Website</a></li>
+</ul>
+</div>
 
+<% if @alternate == true %>
+<div class="sidepanel" id="alternate">
+<h1>Available As</h1>
+<%= link_to image_tag('ical.gif'), :format => :ics %> 
+<%= link_to image_tag('xml.gif'), :format => :xml %> 
+<%= link_to image_tag('json.gif'), :format => :json %> 
 
 </div>
 <% end %>

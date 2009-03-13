@@ -511,16 +511,25 @@ h1#title a {
 	background: #993333;
 }
 
+
 .sidepanel ul {
-	list-style-type: none;
 	margin: 0;
-	padding:0;
-}
+	padding-left: 1.5em;
+} 
 
 .sidepanel li {
-	margin: 0;
-	padding:2px 10px;
-	border-bottom: 1pt solid #BFAE8F;
+    margin: 0;
+    padding:2px 0px;
+    /* border-bottom: 1pt solid #BFAE8F; */
+}
+
+.sidepanel img {
+    margin-top: 3px;
+    padding: 3px;
+}
+
+#alternate a:hover {
+    background-color: white;
 }
 
 .sidepanel li form {
