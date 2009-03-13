@@ -34,25 +34,3 @@ module EventsHelper
     
 end
 
-module CalendarHelper
-    class Calendar
-        attr_accessor :first_weekday, :last_weekday, :month
-    end
-    
-    class CalendarBuilder < TableHelper::TableBuilder
-        
-        private
-        
-        def td_options(day)
-            options = {}
-            if(day.strftime("%Y-%m-%d") ==  @today.strftime("%Y-%m-%d"))
-                options[:class] = 'today'
-            elsif(day.month != @calendar.month)
-                options[:class] = 'notmonth'
-            elsif(day.wday == 0 or day.wday == 6)
-                options[:class] = 'weekend'
-            end
-            options
-        end
-    end
-end
