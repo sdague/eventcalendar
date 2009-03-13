@@ -35,6 +35,10 @@ module EventsHelper
 end
 
 module CalendarHelper
+    class Calendar
+        attr_accessor :first_weekday, :last_weekday, :month
+    end
+    
     class CalendarBuilder < TableHelper::TableBuilder
         
         private
@@ -46,6 +50,9 @@ module CalendarHelper
             end
             if(day.wday == 0 or day.wday == 6)
                 options[:class] = 'weekend'
+            end
+            if(day.month != @calendar.month)
+                options[:class] = 'notmonth'
             end
             options
         end

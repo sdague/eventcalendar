@@ -38,6 +38,10 @@ tr.day td.today .daynumber {
     background-color: #eeeeee;
 }
 
+tr.day td.notmonth, tr.day td.notmonth .daynumber {
+    background-color: #bbbbbb;
+}
+
 .event {
     border: solid 1px black;
     border-right: solid 2px black;
