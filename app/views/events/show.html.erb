@@ -26,6 +26,19 @@
              <h2>Event Location</h2>
              
              <%=h @event.location %>
+
+               <%
+  map = GoogleMap.new
+  map.markers << GoogleMapMarker.new(:map => map, 
+                                     :lat => 47.6597, 
+                                     :lng => -122.318,
+                                     :html => 'My House')
+  %>
+  <%= map.to_html %>
+  <div style="width: 500px; height: 500px;">
+    <%= map.div %>
+  </div>
+
            </div>
 
            <div class="contact">

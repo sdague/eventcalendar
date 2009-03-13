@@ -63,9 +63,9 @@ tr.day td.notmonth, tr.day td.notmonth .daynumber {
     padding: 10px;
 }
 
-.details div {
+/* .details div {
     margin-top: 1em;
-}
+} */
 
 table.event_time th {
     text-align: left;

@@ -9,6 +9,7 @@
 
 
 <%= link_to 'Previous Month', :date => 1.month.ago(@date).beginning_of_month %> |
+<%= link_to 'Current Month', :date => Date.today.beginning_of_month %> |
 <%= link_to 'Next Month', :date => 1.month.since(@date).beginning_of_month %>
 
 <% calendar_for(eventlist, :month => @month, :year => @year) do |t| %>
