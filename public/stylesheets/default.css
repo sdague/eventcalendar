@@ -39,7 +39,7 @@ tr.day td.today .daynumber {
 }
 
 tr.day td.notmonth, tr.day td.notmonth .daynumber {
-    background-color: #bbbbbb;
+    background-color: #aaaaaa;
 }
 
 .event {
