@@ -1,28 +1,8 @@
 <h1>New location</h1>
 
-<% form_for(@location) do |f| %>
-  <%= f.error_messages %>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.label :lat %><br />
-    <%= f.text_field :lat %>
-  </p>
-  <p>
-    <%= f.label :lng %><br />
-    <%= f.text_field :lng %>
-  </p>
-  <p>
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </p>
+<% form_for(@location) do |f| %>
+<%= render :partial => "form", :locals => { :f => f } %>
   <p>
     <%= f.submit "Create" %>
   </p>

@@ -1,28 +1,7 @@
 <h1>Editing location</h1>
 
 <% form_for(@location) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :lat %><br />
-    <%= f.text_field :lat %>
-  </p>
-  <p>
-    <%= f.label :lng %><br />
-    <%= f.text_field :lng %>
-  </p>
-  <p>
-    <%= f.label :address %><br />
-    <%= f.text_area :address %>
-  </p>
+<%= render :partial => "form", :locals => { :f => f } %>
   <p>
     <%= f.submit "Update" %>
   </p>

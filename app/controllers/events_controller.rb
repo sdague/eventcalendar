@@ -52,7 +52,8 @@ class EventsController < ApplicationController
     # GET /events/1.xml
     def show
         @event = Event.find(params[:id])
-
+        @map = create_map(@event.location)
+        
         respond_to do |format|
             format.html # show.html.erb
             format.xml  { render :xml => @event }
@@ -160,5 +161,16 @@ class EventsController < ApplicationController
     def find_supporting
         @lists = List.find(:all)
         @locations = Location.find(:all)
+    end
+    
+    def create_map(location)
+        map = GoogleMap.new
+        map.markers << GoogleMapMarker.new(
+                                           :map => map,
+                                           :lat => location.lat,
+                                           :lng => location.lng,
+                                           :html => location.name
+                                           )
+        return map
     end
 end
