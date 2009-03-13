@@ -9,14 +9,15 @@
   <title>
     <%=h @title %>
   </title>
+  <% if @alternate %>
+  <link type="text/calendar" rel="alternate" href="<%= url_for :format => :ics %>" title="Your Event Calender iCal">
+  <% end %>
+
   <%= javascript_include_tag :defaults %>
   <%= stylesheet_link_tag 'mhvlug' %>
   <%= stylesheet_link_tag 'scaffold' %>
   <%= calendar_date_select_includes "red" %>
   <%= stylesheet_link_tag 'default' %>
-  <% if @alternate %>
-  <%= @alternate %>
-  <% end %>
 </head>
 
 <body>
@@ -35,6 +36,7 @@
 <div class="sidepanel">
 <h1>Navigation</h1>
 <ul>
+  <li><%= link_to 'About', :controller => :admin, :action => :about %></li>
   <li><%= link_to 'Events', :controller => :events %></li>
   <% if not current_user %>
   <li><%= link_to 'Login', :controller => :sessions, :action => :new %></li>
@@ -46,26 +48,14 @@
   <% end %>
 </ul>
 </div>
-
+<% if @alternate == true %>
 <div class="sidepanel">
-<h1>About</h1>
-<p>
-  The MHVLUG Calendar was originally created as the sample application for my
-  <a href="http://mhvlug.org/MonthlyMeetings/2009/02">Ruby on
-  Rails</a> talk for MHVLUG, and to simplify my monthly meeting
-  announcements.  
-  It is made available under the Apache 2.0 License for anyone to
-  build upon.
-</p>
-<p>
-  For more information, as well as full source code for the project,
-  see
-  the <a href="http://projects.dague.net/projects/show/eventmailer">Event
-  Calendar project website</a>.  If you run into a bug or feature that
-  you would like, please feel free to create a redmine account there
-  and file that bug.
-</p>
+<h1>Other Formats</h1>
+
+
 </div>
+<% end %>
+
 </div>
 <!-- end sidebar section -->
 <div id="main">

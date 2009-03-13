@@ -1,3 +1,62 @@
 <% @title = "About Event Calendar" %>
 <h1><%=h @title %></h1>
-
+<p>
+  Event Calendar was originally created as the sample application for my
+  <a href="http://mhvlug.org/MonthlyMeetings/2009/02">Ruby on
+    Rails</a> talk for MHVLUG, and to simplify my monthly meeting
+  announcements. It is made available under the Apache 2.0 License for
+    anyone to build upon.
+</p>
+<h2>Wait?  Another web calendar? Why did you do that?</h2>
+<p>
+  I got to Event Calendar somewhat organicly.  iCal has always
+  fascinated me, and a couple years ago I came up with a simple Perl
+  script that could generate multipart/mixed messages with iCal
+  invites in them for our MHVLUG meetings.  This was always a hack,
+  and meant I was editting the main script every month to generate
+  those emails.  But what it did do was make it so that our invite
+  emails included iCal invites.  This automatically did the right
+  thing for a whole class of users, and pop the event onto their calendar.
+</p>
+<p>
+  The code was never good enough to open source, so when I was looking
+  for a good simple project for the MHVLUG Ruby on Rails talk I was
+  giving, I decided this was it.  I wrote a simple 2 model application
+  that would list information on the web in text, and give me a 'Send
+  Email' button to generate the invites.
+</p>
+<p>
+  As with all software, it grew over time.  I spent some time making
+  the front page look more like a calendar using the excellent
+  table_builder plugin, and once I had something that was both
+  functional and pretty, it somewhat snowballed.  The reality is, this
+  is still a pretty simple application.  The entire application logic
+  is about 600 lines of code, and it utilizes a large number of
+  facilities in Ruby on Rails, including:
+  <ul>
+    <li>Basic relationships between models</li>
+    <li>Custom Routes</li>
+    <li>The integration of restful_authentication, role requirement, and openid</li>
+    <li>Content negotiation for controllers (same url available as
+    text/html, text/calendar, text/xml, and text/json).</li>
+    <li>Action Mailer infrastructure for sending emails</li>
+    <li>A few bits of prototype linkage</li>
+  </ul>
+  It also runs on an sqlite database in the default configuration.
+  Making it really easy to bring up on laptop to play with.  As such
+  it's a pretty decent thing to put out there for people to build from.
+</p>
+<h2>Where do I get the source?</h2>
+<p>
+  You can get full source from my 
+  <a href="http://projects.dague.net/projects/show/eventmailer">Event
+    Calendar project website</a>.  If you run into a bug or feature that
+  you would like, please feel free to create a redmine account there
+  and file that bug.
+</p>
+<p>
+  My intent is to slowly polish the application over time, mostly for
+  the needs of MHVLUG, however I'm definitely interested in other
+  people using this code, and integrating changes that make your life
+  easier.
+</p>
