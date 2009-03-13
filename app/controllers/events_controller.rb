@@ -93,6 +93,19 @@ class EventsController < ApplicationController
         @event = Event.find(params[:id])
     end
 
+    # GET /events/1/copy
+    def copy
+        @lists = List.find(:all)
+        old_event = Event.find(params[:id])
+        @event = Event.new
+        @event.update_attributes(old_event.attributes)
+        
+        respond_to do |format|
+            format.html { render :action => "edit" }
+            format.xml  { head :ok }
+        end
+    end
+    
     # POST /events
     # POST /events.xml
     def create

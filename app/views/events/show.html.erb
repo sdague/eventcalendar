@@ -27,5 +27,9 @@
 
 </div>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
+<% if current_user and current_user.has_role?("admin") %>
+<%= link_to 'Edit', edit_event_path(@event) %> | 
+<%= link_to 'Copy', copy_event_path(@event) %> |
+<%= link_to 'Destroy', @event, :confirm => 'Are you sure?', :method => :delete %> |
+<% end %>
 <%= link_to 'Back', events_path %>
