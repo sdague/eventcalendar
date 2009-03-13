@@ -21,7 +21,7 @@
           <%= link_to event.name, event %><br/>
           <%=h event.start.to_datetime.strftime("%k:%M") %> - 
           <%=h event.end.to_datetime.strftime("%k:%M") %><br/>
-          <%=h event.location %>
+          <%=h event.location.name %>
        </div>
        <% end %>
    <% end %>
