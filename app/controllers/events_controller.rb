@@ -70,15 +70,31 @@ class EventsController < ApplicationController
                 if @event.boiler_plate
                     @boilerplate = render_to_string :inline => @event.boiler_plate.description
                 end
-                render :text => Notifier.create_invitation(@event, @boilerplate)
-                response.content_type = "text/plain"
+                @email = Notifier.create_invitation(@event, @boilerplate)
+                response.content_type = "text/html"
+                render :action => :email
             }
+        end
+    end
+    
+    def preview
+        @event = Event.find(params[:id])
+        if @event.boiler_plate
+            @boilerplate = render_to_string :inline => @event.boiler_plate.description
+        end
+        @email = Notifier.create_invitation(@event, @boilerplate)
+        
+        respond_to do |format|
+            format.html
         end
     end
     
     def email
         @event = Event.find(params[:id])
-        Notifier.deliver_invitation(@event)
+        if @event.boiler_plate
+            @boilerplate = render_to_string :inline => @event.boiler_plate.description
+        end
+        Notifier.deliver_invitation(@event, @boilerplate)
         respond_to do |format|
             flash[:notice] = "Email sent out for #{@event.name}."
             format.html { redirect_to(events_url) }

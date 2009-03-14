@@ -1,0 +1,15 @@
+<% @title = "#{@event.name} for #{@event.start.to_datetime.strftime("%a, %B %e @ %l:%M %P")}" %>
+
+ <div class="event">
+   <h1>Email Preview for <%= @title %></h1>
+   <pre>
+<%= @email %>
+   </pre>
+</div>
+
+<% if current_user and current_user.has_role?("admin") %>
+<%= link_to 'Edit', edit_event_path(@event) %> | 
+<%= link_to 'Copy', copy_event_path(@event) %> |
+<%= link_to 'Destroy', @event, :confirm => 'Are you sure?', :method => :delete %> |
+<% end %>
+<%= link_to 'Back', :action => "index", :date => @event.start.to_date.beginning_of_month %>
