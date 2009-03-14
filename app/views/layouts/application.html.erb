@@ -41,7 +41,7 @@
   <li><%= link_to 'Login', :controller => :sessions, :action => :new %></li>
   <% else %>
   <% if current_user.has_role?("admin") %>
-  <li><%= link_to 'Lists', :controller => :lists %></li>
+  <li><%= link_to 'Admin', :controller => :admin %></li>
   <% end %>
   <li><%= link_to 'Logout', :controller => :sessions, :action => :destroy %></li>
   <% end %>

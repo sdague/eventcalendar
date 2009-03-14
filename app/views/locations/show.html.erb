@@ -1,28 +1,11 @@
-<p>
-  <b>Name:</b>
-  <%=h @location.name %>
-</p>
+<h1><%=h @location.name %></h1>
+<%= simple_format(h(@location.description)) %>
+<%= simple_format(h(@location.address)) %>
 
-<p>
-  <b>Description:</b>
-  <%=h @location.description %>
-</p>
-
-<p>
-  <b>Lat:</b>
-  <%=h @location.lat %>
-</p>
-
-<p>
-  <b>Lng:</b>
-  <%=h @location.lng %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%=h @location.address %>
-</p>
-
+<%= @map.to_html %>
+<div style="width: 800px; height: 500px;">
+  <%= @map.div %>
+</div>
 
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>

@@ -1,2 +1,54 @@
-<h1>Admin#index</h1>
-<p>Find me in app/views/admin/index.html.erb</p>
+<h1>Admin Overview</h1>
+<div class="events">
+  <h2>Upcoming Events</h2>
+  <table>
+  <% @events.each do |event| %>
+  <tr>
+    <td><%= link_to h(event.name), event_path(event) %></td>
+    <td><%=h event.start.strftime("%a, %B %e @ %l:%M %P") %></td>
+    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <td><%= link_to 'Copy', copy_event_path(event) %></td>
+    <td><%= link_to 'Preview', preview_event_path(event) %></td>
+    <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% end %>
+  </table>
+  <%= link_to 'New Event', new_event_path %>
+
+  <h2>Locations</h2>
+  <table>
+  <% @locations.each do |location| %>
+  <tr>
+    <td><%= link_to h(location.name), location_path(location) %></td>
+    <td><%=h location.address %></td>
+    <td><%= link_to 'Edit', edit_location_path(location) %></td>
+    <td><%= link_to 'Destroy', location, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% end %>
+  </table>
+  <%= link_to 'New Location', new_location_path %>
+
+  <h2>Boiler Plates</h2>
+  <table>
+  <% @boilerplates.each do |boilerplate| %>
+  <tr>
+    <td><%= link_to h(boilerplate.name), boiler_plate_path(boilerplate) %></td>
+    <td><%= link_to 'Edit', edit_boiler_plate_path(boilerplate) %></td>
+    <td><%= link_to 'Destroy', boilerplate, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% end %>
+  </table>
+  <%= link_to 'New Boilerplate', new_boiler_plate_path %>
+
+  <h2>Lists</h2>
+  <table>
+  <% @lists.each do |list| %>
+  <tr>
+    <td><%= link_to h(list.name), list_path(list) %></td>
+    <td><%=h list.address %></td>
+    <td><%= link_to 'Edit', edit_list_path(list) %></td>
+    <td><%= link_to 'Destroy', list, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% end %>
+  </table>
+  <%= link_to 'New List', new_list_path %>

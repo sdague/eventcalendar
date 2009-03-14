@@ -3,6 +3,7 @@ class LocationsController < ApplicationController
     
   # GET /locations
   # GET /locations.xml
+    include LocationsHelper
   def index
     @locations = Location.find(:all)
 
@@ -16,6 +17,7 @@ class LocationsController < ApplicationController
   # GET /locations/1.xml
   def show
     @location = Location.find(params[:id])
+    @map = create_map(@location)
 
     respond_to do |format|
       format.html # show.html.erb
