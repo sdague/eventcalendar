@@ -28,9 +28,6 @@ Rails::Initializer.run do |config|
   config.gem "calendar_date_select"
   config.gem "andre-geokit", :lib=>'geokit', :source => 'http://gems.github.com'
     
-  implicit_parts_order = ["text/plain", "text/calendar"]
-    
-    
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "aws-s3", :lib => "aws/s3"
 

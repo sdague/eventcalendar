@@ -79,5 +79,6 @@ class Notifier < ActionMailer::Base
         from  event.list.from
         content_type    "multipart/mixed"
         body           :event => event, :cal => cal, :boilerplate => boilerplate
+        implicit_parts_order  ["text/calendar", "text/plain"]
     end
 end
