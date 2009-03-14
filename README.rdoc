@@ -10,11 +10,11 @@ This application has been tested on Ubuntu 8.10, other platforms can
 be made to work, but thats where it's running.
 
 The application requires:
- * rails == 2.2.2
- * icalendar == 1.1.0
- * tzinfo
- * ruby-openid
- * calendar_date_select
+* rails == 2.2.2
+* icalendar == 1.1.0
+* tzinfo
+* ruby-openid
+* calendar_date_select
 
 == Installing Rails 2.2 on Ubuntu
 
@@ -24,10 +24,10 @@ you in a bind.
 
 The least painful way around this is the following:
 
- * sudo gem install rubygems-update
- * sudo /var/lib/gems/1.8/bin/update_rubygems
- * sudo rm -f /usr/lib/ruby/gems
- * sudo ln -s /var/lib/gems /usr/lib/ruby/gems
+* sudo gem install rubygems-update
+* sudo /var/lib/gems/1.8/bin/update_rubygems
+* sudo rm -f /usr/lib/ruby/gems
+* sudo ln -s /var/lib/gems /usr/lib/ruby/gems
 
 That will get you a newer gem but still have it install into
 /var/lib/gem sanely.
