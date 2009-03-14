@@ -4,47 +4,8 @@ MHVLUG is proud to announce our <%= @event.start.to_datetime.strftime("%B %Y") %
 
 <%= word_wrap(@event.description, 72) %>
 
-Before the main talk we will do a series of lightning talks (up to 3),
-each 10 minutes or less, on something Open Source related.  It could
-be a fun new program, a book, a blog post, or really anything you
-think the wider MHVLUG community would find some interest in.  People
-that have posted their talk subject to the wiki in advance have
-priority.  Time permitting, we'll also take impromptu lightning talks
-from the floor.
+<% if @boilerplate %>
+<%= word_wrap(@boilerplate, 72) %>
+<% end %>
 
-If you are planning on using the projector for your lightning talk,
-please arrive at 5:30, to ensure we can work out any kinks with the
-projector prior to the meeting.
-
-We often have Ubuntu CDs, OpenCDs, or Prentice Hall technical books
-to give away.  They will be given away on a first come first served
-basis, so be sure to get there on time.
-
-The meeting will take place at the Mid Hudson Library System
-Auditorium, in Poughkeepsie, NY, on <%=
-@event.start.to_datetime.strftime("%A, %B %e")%>
-from<%=
-@event.start.to_datetime.strftime("%l%P") %> -<%=
-@event.end.to_datetime.strftime("%l%P") %>.  A nice map to the Auditorium can be found here:
-http://midhudson.org/help/mhls_building_map.htm.
-
-All meetings are *free* and open to the public, and everyone from all
-levels of expertise and interest in Linux and Open Source Software are
-encouraged to attend (and bring a friend or two)!  In addition, after
-each meeting ends everyone is welcome to join in on an informal dinner
-gathering at the Palace Diner (http://www.thepalacediner.com/) on
-Washington St.  This is a great opportunity to interact with members
-of the local Linux community, and a forum where questions and comments
-are strongly welcomed.
-
-For more details, please see http://mhvlug.org.
-
-You can also keep up to date with MHVLUG events via our public google
-calendar at:
- HTML: http://www.google.com/calendar/embed?src=3kjb7a60auqi3gi2pj49hvej6k%40group.calendar.google.com&ctz=America/New_York
- iCAL: http://www.google.com/calendar/ical/3kjb7a60auqi3gi2pj49hvej6k%40group.calendar.google.com/public/basic.ics
-
-Hope to see you all there!
-
-      -Sean
 

@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :boiler_plates
+
   map.resources :locations
 
   map.resources :lists

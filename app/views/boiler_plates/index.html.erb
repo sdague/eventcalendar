@@ -1,0 +1,22 @@
+<h1>Listing boiler_plates</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+
+<% for boiler_plate in @boiler_plates %>
+  <tr>
+    <td><%=h boiler_plate.name %></td>
+    <td><%=h boiler_plate.description %></td>
+    <td><%= link_to 'Show', boiler_plate %></td>
+    <td><%= link_to 'Edit', edit_boiler_plate_path(boiler_plate) %></td>
+    <td><%= link_to 'Destroy', boiler_plate, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New boiler_plate', new_boiler_plate_path %>

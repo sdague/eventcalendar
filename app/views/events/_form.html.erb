@@ -12,6 +12,10 @@
     <%= f.text_area :description %>
   </p>
   <p>
+    <%= f.label :boiler_plate_id %><br />
+    <%= collection_select("event", "boiler_plate_id", @boiler_plates, "id", "name") %>
+  </p>
+  <p>
     <%= f.label :location_id %><br />
     <%= collection_select("event", "location_id", @locations, "id", "name") %>
   </p>

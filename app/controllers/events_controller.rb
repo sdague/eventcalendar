@@ -67,8 +67,11 @@ class EventsController < ApplicationController
                 render :text => cal.to_ical
             }
             format.text {
+                if @event.boiler_plate
+                    @boilerplate = render_to_string :inline => @event.boiler_plate.description
+                end
+                render :text => Notifier.create_invitation(@event, @boilerplate)
                 response.content_type = "text/plain"
-                render :text => Notifier.create_invitation(@event)
             }
         end
     end
@@ -161,6 +164,7 @@ class EventsController < ApplicationController
     def find_supporting
         @lists = List.find(:all)
         @locations = Location.find(:all)
+        @boiler_plates = BoilerPlate.find(:all)
     end
     
     def create_map(location)

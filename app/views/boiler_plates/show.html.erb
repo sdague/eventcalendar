@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @boiler_plate.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @boiler_plate.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_boiler_plate_path(@boiler_plate) %> |
+<%= link_to 'Back', boiler_plates_path %>
