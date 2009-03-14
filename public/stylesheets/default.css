@@ -83,3 +83,16 @@ input#openid_url {
 hr {
     margin: 0px 5px;
 }
+
+#google_map {
+    border: solid 2px black;
+    margin-bottom: 10px;
+}
+
+.contact {
+    margin-top: 20px;
+}
+
+.alternate {
+    margin-top: 10px;
+}
