@@ -21,7 +21,7 @@ ActionController::Routing::Routes.draw do |map|
     
     map.resource :session
 
-    map.resources :events, :collection => {:embed => :get }, :member => {:copy => :get, :preview => :get } 
+    map.resources :events, :collection => {:embed => :get }, :member => {:copy => :post, :preview => :get, :email => :post } 
 
     # The priority is based upon order of creation: first created -> highest priority.
     
