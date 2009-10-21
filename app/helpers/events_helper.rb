@@ -23,7 +23,7 @@ module EventsHelper
                     dtend  e.end.to_datetime
                     summary e.name
                     description desc
-                    location e.location.name
+                    location "#{e.location.name}, #{e.location.address}"
                     organizer     "MAILTO:#{e.list.from}"
                     klass       "PUBLIC"
                 end
