@@ -9,13 +9,14 @@ class EventsController < ApplicationController
     include LocationsHelper
     
     def index
-        @events = Event.find(:all)
         if params[:date]
             @date = Date.parse(params[:date])
         else
             @date = Date.today
         end
-        
+
+        @events = Event.find(:all, :conditions => ["start > ?", 1.year.ago(@date)])
+          
         respond_to do |format|
             format.html # index.html.erb
             format.xml  { render :xml => @events }
