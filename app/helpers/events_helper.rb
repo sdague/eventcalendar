@@ -23,7 +23,7 @@ module EventsHelper
                     dtend  e.end.to_datetime
                     summary e.name
                     description desc
-                    location "#{e.location.address.gsub(/\n/,",")}"
+                    location "#{e.location.address.gsub(/[\n\r]+/,", ")}"
                     organizer     "MAILTO:#{e.list.from}"
                     klass       "PUBLIC"
                 end
