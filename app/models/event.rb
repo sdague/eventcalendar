@@ -10,6 +10,10 @@ class Event < ActiveRecord::Base
     end
     
     def before_update
-        seq = seq + 1
+        begin
+            seq = seq + 1
+        rescue
+            seq = 1
+        end
     end
 end
