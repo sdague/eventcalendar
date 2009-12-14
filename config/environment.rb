@@ -26,7 +26,7 @@ Rails::Initializer.run do |config|
   config.gem "icalendar", :version => "1.1.0"
   config.gem "tzinfo"
   config.gem "calendar_date_select"
-  config.gem "andre-geokit", :lib=>'geokit', :source => 'http://gems.github.com'
+  config.gem "andre-geokit", :lib=>'geokit', :version=> "1.2.5", :source => 'http://gems.github.com'
     
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "aws-s3", :lib => "aws/s3"

@@ -23,6 +23,7 @@ module EventsHelper
                     dtend  e.end.to_datetime
                     summary e.name
                     description desc
+                    sequence e.seq
                     last_modified e.updated_at.to_datetime
                     created e.created_at.to_datetime
                     location "#{e.location.address.gsub(/[\n\r]+/,", ")}"
